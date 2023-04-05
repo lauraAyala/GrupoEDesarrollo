@@ -1,10 +1,10 @@
-package GrupoE.Desarrollo
+package ar.edu.unq.desapp.grupoE.BackendDesappAPL
 
 import org.junit.jupiter.api.Test
 import org.springframework.boot.test.context.SpringBootTest
 
 @SpringBootTest
-class DesarrolloApplicationTests {
+class BackendDesappAplApplicationTests {
 
 	@Test
 	fun contextLoads() {

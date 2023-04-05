@@ -1,11 +1,11 @@
-package GrupoE.Desarrollo
+package ar.edu.unq.desapp.grupoE.BackendDesappAPL
 
 import org.springframework.boot.autoconfigure.SpringBootApplication
 import org.springframework.boot.runApplication
 
 @SpringBootApplication
-class DesarrolloApplication
+class BackendDesappAplApplication
 
 fun main(args: Array<String>) {
-	runApplication<DesarrolloApplication>(*args)
+	runApplication<BackendDesappAplApplication>(*args)
 }

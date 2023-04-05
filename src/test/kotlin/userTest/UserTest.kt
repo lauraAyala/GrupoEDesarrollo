@@ -1,8 +1,9 @@
-package kotlin.GrupoE.Desarrollo.userTest
+package userTest
 
 import model.Crypto
 import model.User
-import org.junit.Assert
+import org.junit.jupiter.api.Assertions.assertEquals
+import org.junit.jupiter.api.Test
 
 class UserTest {
 
@@ -10,8 +11,7 @@ class UserTest {
     fun userWithName(){
         var user1: User = User().builder()
         user1.whitName("Laura")
-
-        Assert.assertEquals(user1.name, "Laura")
+        assertEquals(user1.name, "Laura")
 
     }
 
@@ -21,7 +21,7 @@ class UserTest {
         var user1: User = User().builder()
         user1.withLastName("ayala")
 
-        Assert.assertEquals(user1.name, "ayala")
+        assertEquals(user1.lastName, "ayala")
 
 
     }
@@ -33,8 +33,8 @@ class UserTest {
         user1.withEmail("layala@gmail")
         user1.withPassword("1234")
 
-        Assert.assertEquals(user1.email, "layala@gmail")
-        Assert.assertEquals(user1.email, "1234")
+        assertEquals(user1.email, "layala@gmail")
+        assertEquals(user1.password, "1234")
 
     }
 
@@ -43,7 +43,7 @@ class UserTest {
 
         var user1: User = User().builder()
         user1.withDirection("alen 123")
-        Assert.assertEquals(user1.direction, "alen 123")
+        assertEquals(user1.direction, "alen 123")
 
     }
 
@@ -51,16 +51,16 @@ class UserTest {
     fun userIsntCriptos(){
 
         var user1: User = User().builder()
-        Assert.assertEquals(user1.cryptos.size, 0)
+        assertEquals(user1.cryptos.size, 0)
     }
 
     @Test
     fun userWithOneCripto(){
 
         var user1: User = User().builder()
-        var cryptoA: Crypto = Crypto.build()
+        var cryptoA: Crypto = Crypto().build()
         user1.addCryptoActivity(cryptoA)
-        Assert.assertEquals(user1.cryptos.size, 1)
+        assertEquals(user1.cryptos.size, 1)
     }
 
 
