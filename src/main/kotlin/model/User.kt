@@ -1,17 +1,29 @@
 package model
 
+import jakarta.persistence.Column
+import jakarta.persistence.Entity
+import org.springframework.data.annotation.Id
 import java.util.*
 
-
+@Entity
 class User (): Observable() {
 
+    @Id
+    var id : Int? = null
+    @Column(unique=true, length = 8)
         var name: String? = null
+    @Column(name="lastName", length = 8)
         var lastName: String? = null
-        var email: String? = null
-        var password: String? = null
-        var direction: String? = null
-        var cvuMP: String? = null
-        var cryptos: ArrayList<Crypto> = ArrayList()
+    @Column(name="email", length = 8)
+    var email: String? = null
+    @Column(name="password", length = 8)
+    var password: String? = null
+    @Column(name="direction", length = 8)
+    var direction: String? = null
+    @Column(name="cvuMP", length = 8)
+    var cvuMP: String? = null
+    @Column(name="cryptos", length = 8)
+    var cryptos: ArrayList<Crypto> = ArrayList()
 
 
         constructor(nameU: String, lastNameU: String, emailU: String, passwordU: String, directionU: String, cvu: String) : this (){
