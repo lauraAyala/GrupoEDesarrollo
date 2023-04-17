@@ -1,5 +1,7 @@
 import org.jetbrains.kotlin.gradle.tasks.KotlinCompile
 
+
+
 plugins {
 	war
 	id("org.springframework.boot") version "3.0.5"
@@ -7,6 +9,7 @@ plugins {
 	kotlin("jvm") version "1.7.22"
 	kotlin("plugin.spring") version "1.7.22"
 	kotlin("plugin.jpa") version "1.7.22"
+	id ("org.sonarqube") version "3.5.0.2730"
 }
 
 group = "ar.edu.unq.desapp.grupoE"
@@ -28,6 +31,8 @@ dependencies {
 	providedRuntime("org.springframework.boot:spring-boot-starter-tomcat")
 	testImplementation("org.springframework.boot:spring-boot-starter-test")
 	testImplementation("org.springframework.security:spring-security-test")
+	//implementation("org.springdoc:springdoc-openapi-ui:1.6.4")
+	//implementation("org.springdoc:springdoc-openapi-starter-webmvc-ui:2.0.0")
 }
 
 tasks.withType<KotlinCompile> {
@@ -40,3 +45,5 @@ tasks.withType<KotlinCompile> {
 tasks.withType<Test> {
 	useJUnitPlatform()
 }
+
+
