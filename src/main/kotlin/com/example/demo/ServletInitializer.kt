@@ -1,4 +1,4 @@
-package ar.edu.unq.desapp.grupoE.BackendDesappAPL
+package com.example.demo
 
 import org.springframework.boot.builder.SpringApplicationBuilder
 import org.springframework.boot.web.servlet.support.SpringBootServletInitializer
@@ -6,7 +6,7 @@ import org.springframework.boot.web.servlet.support.SpringBootServletInitializer
 class ServletInitializer : SpringBootServletInitializer() {
 
 	override fun configure(application: SpringApplicationBuilder): SpringApplicationBuilder {
-		return application.sources(BackendDesappAplApplication::class.java)
+		return application.sources(DemoApplication::class.java)
 	}
 
 }

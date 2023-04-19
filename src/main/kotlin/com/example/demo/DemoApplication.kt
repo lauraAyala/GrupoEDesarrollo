@@ -1,11 +1,11 @@
-package ar.edu.unq.desapp.grupoE.BackendDesappAPL
+package com.example.demo
 
 import org.springframework.boot.autoconfigure.SpringBootApplication
 import org.springframework.boot.runApplication
 
 @SpringBootApplication
-class BackendDesappAplApplication
+class DemoApplication
 
 fun main(args: Array<String>) {
-	runApplication<BackendDesappAplApplication>(*args)
+	runApplication<DemoApplication>(*args)
 }

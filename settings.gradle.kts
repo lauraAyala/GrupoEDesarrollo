@@ -1,1 +1,1 @@
-rootProject.name = "Backend-Desapp-APL"
+rootProject.name = "demo"

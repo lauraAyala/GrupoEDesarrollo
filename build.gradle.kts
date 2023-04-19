@@ -7,22 +7,23 @@ plugins {
 	kotlin("jvm") version "1.7.22"
 	kotlin("plugin.spring") version "1.7.22"
 	kotlin("plugin.jpa") version "1.7.22"
+	id ("org.sonarqube")version "3.5.0.2730"
 }
 
-group = "ar.edu.unq.desapp.grupoE"
+sonarqube {
+	properties {
+		property("sonar.projectKey", "lauraAyala_GrupoEDesarrollo")
+		property("sonar.organization", "lauraayala")
+		property("sonar.host.url", "https://sonarcloud.io")
+	}
+}
+
+group = "com.example"
 version = "0.0.1-SNAPSHOT"
 java.sourceCompatibility = JavaVersion.VERSION_17
 
-
-
 repositories {
 	mavenCentral()
-	maven {
-		url = uri("https://repo.spring.io/release")
-	}
-	maven {
-		url = uri("https://repository.jboss.org/maven2")
-	}
 }
 
 dependencies {
@@ -31,20 +32,14 @@ dependencies {
 	implementation("org.springframework.boot:spring-boot-starter-web")
 	implementation("com.fasterxml.jackson.module:jackson-module-kotlin")
 	implementation("org.jetbrains.kotlin:kotlin-reflect")
-	implementation("org.springframework.boot:spring-boot-starter-parent:2.5.5")
 	developmentOnly("org.springframework.boot:spring-boot-devtools")
-	runtimeOnly("com.h2database:h2")
+	runtimeOnly("org.postgresql:postgresql")
 	//providedRuntime("org.springframework.boot:spring-boot-starter-tomcat")
-	//testImplementation("org.springframework.boot:spring-boot-starter-test")
+	testImplementation("org.springframework.boot:spring-boot-starter-test")
 	testImplementation("org.springframework.security:spring-security-test")
-	implementation("org.springframework.boot:spring-boot-starter-data-rest")
-	implementation("org.apache.camel:camel-spring-boot-starter:2.17.0")
-	//implementation("org.hibernate:hibernate-core")
-	//implementation("mysql:mysql-connector-java")
-	testImplementation("org.springframework.boot:spring-boot-starter-test") {
-		exclude(group = "org.junit.vintage", module = "junit-vintage-engine")
-		testImplementation("junit:junit:4.12")
-	}
+	implementation("org.springdoc:springdoc-openapi-starter-webmvc-ui:2.0.3")
+	implementation("org.springframework.boot:spring-boot-starter-validation")
+
 
 }
 
