@@ -1,6 +1,5 @@
 package com.example.demo.model
 
-import jakarta.annotation.Nullable
 import jakarta.persistence.*
 import org.hibernate.collection.spi.PersistentBag
 
