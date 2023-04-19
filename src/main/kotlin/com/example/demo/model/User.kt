@@ -79,25 +79,5 @@ class User() {
         return User("Laura","Ayala","lau@gmail","123","chile","123456")
     }
 
-    fun addCryptoActivity(crypto:Crypto){
-        //this.cryptos.add(crypto)
-    }
-
-    fun saleCrypto(crypto: Crypto){
-
-        //crypto.operation = "sale"
-       // notifyObservers( crypto)
-    }
-
-//    fun buyCrypto(crypto: Crypto){
-//
-//        crypto.operation = "buy"
-//        //  notifyObservers( crypto)
-//
-//    }
-//
-//    fun createOperacion (crypto: Crypto, typeOperation : String){
-//        var operationNew : Operation = Operation(crypto, 2 , this, typeOperation)
-//    }
 
 }
