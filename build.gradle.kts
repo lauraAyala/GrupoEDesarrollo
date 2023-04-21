@@ -55,5 +55,5 @@ tasks.withType<Test> {
 }
 
 tasks.named<Jar>("jar"){
-	destinationDir = file("$rootDir/build/lib")
+	enabled = false
 }
