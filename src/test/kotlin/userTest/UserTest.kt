@@ -1,7 +1,9 @@
 package userTest
 
 import com.example.demo.model.Crypto
+import com.example.demo.model.CryptoBuilder
 import com.example.demo.model.User
+import com.example.demo.model.UserBuilder
 import org.junit.jupiter.api.Assertions
 import org.junit.jupiter.api.Test
 
@@ -9,7 +11,7 @@ class UserTest {
 
     @Test
     fun userWithName(){
-        var user1: User = User().builder()
+        var user1: UserBuilder = UserBuilder().builder()
         user1.whitName("Laura")
         Assertions.assertEquals(user1.name, "Laura")
 
@@ -17,7 +19,7 @@ class UserTest {
     @Test
     fun userWithLasName(){
 
-        var user1: User = User().builder()
+        var user1: UserBuilder = UserBuilder().builder()
         user1.withLastName("ayala")
 
         Assertions.assertEquals(user1.lastName, "ayala")
@@ -28,7 +30,7 @@ class UserTest {
     @Test
     fun userWithEmailAndPassword(){
 
-        var user1: User = User().builder()
+        var user1: UserBuilder = UserBuilder().builder()
         user1.withEmail("layala@gmail")
         user1.withPassword("1234")
 
@@ -40,7 +42,7 @@ class UserTest {
     @Test
     fun userWithDirection(){
 
-        var user1: User = User().builder()
+        var user1: UserBuilder = UserBuilder().builder()
         user1.withDirection("alen 123")
         Assertions.assertEquals(user1.direction, "alen 123")
 
@@ -49,18 +51,19 @@ class UserTest {
     @Test
     fun userIsntCriptos(){
 
-        var user1: User = User().builder()
+        var user1: UserBuilder = UserBuilder().builder()
         Assertions.assertEquals(user1.cryptos!!.size, 0)
     }
 
-   /* @Test
+   @Test
     fun userWithOneCripto(){
 
-        var user1: User = User().builder()
-        var cryptoA: Crypto = Crypto().build()
+        var user1: UserBuilder = UserBuilder().builder()
+        var cryptoA: CryptoBuilder = CryptoBuilder().build()
         user1.addCryptoActivity(cryptoA)
         Assertions.assertEquals(user1.cryptos.size, 1)
-    }
+       Assertions.assertEquals(user1.cryptos.get(0), cryptoA)
 
-    */
+   }
+
 }

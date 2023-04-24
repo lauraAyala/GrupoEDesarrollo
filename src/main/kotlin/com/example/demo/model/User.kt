@@ -2,11 +2,14 @@ package com.example.demo.model
 
 import jakarta.persistence.*
 import org.hibernate.collection.spi.PersistentBag
+import org.hibernate.collection.spi.PersistentCollection
+import java.util.Observable
+import java.util.Observer
 
 
 @Entity
-@Table(name = "userCrudTestD")
-class User() {
+@Table(name = "userT")
+open class User()  {
 
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
@@ -24,7 +27,8 @@ class User() {
     @Column
     var cvuMP : String?=null
     @OneToMany( fetch = FetchType.EAGER , mappedBy = "user", cascade = arrayOf(CascadeType.ALL))
-    var cryptos: PersistentBag<Crypto>? = null
+    var cryptos: ArrayList<Crypto> = ArrayList<Crypto>()
+        //var cryptos: PersistentBag<Crypto>? = null
 
 
 
@@ -37,46 +41,12 @@ class User() {
         this.cvuMP = cvu
     }
 
-    fun whitName(nameU:String): User{
+    fun addCryptoActivity(cryptoA: Crypto) {
 
-        this.name = nameU
-      return this
+        this.cryptos.add(cryptoA)
+
     }
 
-    fun withLastName(lastNameU: String): User{
-
-       this.lastName = lastNameU
-        return this
-    }
-
-    fun withEmail(emailU: String): User{
-
-        this.email = emailU
-       return this
-    }
-
-    fun withPassword(passwordU: String): User{
-
-        this.password = passwordU
-        return this
-    }
-
-    fun withDirection(directionU: String): User{
-
-        this.direction = directionU
-        return this
-    }
-
-    fun withCvuMP(cvu: String): User{
-
-        this.cvuMP = cvu
-        return this
-    }
-
-    fun builder(): User{
-
-        return User("Laura","Ayala","lau@gmail","123","chile","123456")
-    }
 
 
 }

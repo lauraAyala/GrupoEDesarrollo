@@ -4,7 +4,7 @@ import jakarta.persistence.*
 import java.time.LocalDateTime
 
 @Entity
-//@Table(name = "cryptoCrud")
+open//@Table(name = "cryptoCrud")
 class Crypto() {
 
     @Id
@@ -30,24 +30,10 @@ class Crypto() {
         this.date = dateC
         this.cryptoQuote = cryptoQ
     }
-    fun cryptoWithName(nameC: String){
-
-        this.name = nameC
-    }
-
-    fun cryptoWithDate(dateC: String){
-
-        this.date = dateC
-    }
-
     fun cryptoWithQuote(quote:Int){
 
         this.cryptoQuote = quote
     }
 
-    fun build() : Crypto {
-          return Crypto("ALICEUSDT", LocalDateTime.of(2023, 4, 18, 3, 46).toString(),0)
-
-    }
 
 }
