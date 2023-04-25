@@ -39,7 +39,6 @@ class UserBuilder : User() {
     }
 
     fun builder(): UserBuilder{
-//"Laura","Ayala","lau@gmail","123","chile","123456"
         return UserBuilder()
     }
 }

@@ -1,10 +1,9 @@
 package com.example.demo.model
 
 import jakarta.persistence.*
-import java.time.LocalDateTime
 
 @Entity
-open//@Table(name = "cryptoCrud")
+open
 class Crypto() {
 
     @Id

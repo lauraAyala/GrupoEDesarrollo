@@ -1,11 +1,6 @@
 package com.example.demo.model
 
 import jakarta.persistence.*
-import org.hibernate.collection.spi.PersistentBag
-import org.hibernate.collection.spi.PersistentCollection
-import java.util.Observable
-import java.util.Observer
-
 
 @Entity
 @Table(name = "userT")
