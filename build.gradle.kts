@@ -40,7 +40,6 @@ dependencies {
 	implementation("org.springdoc:springdoc-openapi-starter-webmvc-ui:2.0.3")
 	implementation("org.springframework.boot:spring-boot-starter-validation")
 
-
 }
 
 tasks.withType<KotlinCompile> {
@@ -50,6 +49,7 @@ tasks.withType<KotlinCompile> {
 	}
 }
 
+project.tasks["sonar"].dependsOn "anotherTask"
 tasks.withType<Test> {
 	useJUnitPlatform()
 }
