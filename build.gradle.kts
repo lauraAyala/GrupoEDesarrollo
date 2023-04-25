@@ -54,6 +54,6 @@ tasks.withType<Test> {
 	useJUnitPlatform()
 }
 
-/*tasks.named<War>("war"){
+tasks.named<Jar>("jar"){
 	enabled = false
-}*/
+}
