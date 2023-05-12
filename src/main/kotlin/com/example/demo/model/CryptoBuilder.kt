@@ -1,5 +1,7 @@
 package com.example.demo.model
 
+import java.time.LocalDateTime
+
 class CryptoBuilder : Crypto() {
 
     fun cryptoWithName(nameC: String){
@@ -7,7 +9,7 @@ class CryptoBuilder : Crypto() {
         this.name = nameC
     }
 
-    fun cryptoWithDate(dateC: String){
+    fun cryptoWithDate(dateC: LocalDateTime){
 
         this.date = dateC
     }

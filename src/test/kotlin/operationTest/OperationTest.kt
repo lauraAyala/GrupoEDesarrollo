@@ -29,14 +29,15 @@ class OperationTest {
         var user1 : UserBuilder = UserBuilder().builder()
         user1.whitName("Laura")
         operation1.operationWithUser(user1)
-        assertEquals(operation1.user!!.name, "Laura")
+        assertEquals(operation1.userCreated!!.name, "Laura")
     }
 
     @Test
     fun operationWithOperationType(){
         var operation1 : OperationBuilder = OperationBuilder().builder()
-        operation1.operationWithType("Venta")
-        assertEquals(operation1.operationType!!, "Venta")
+        var sale = SaleOperation()
+        operation1.operationWithType(sale)
+        assertEquals(operation1.operationType!!, sale)
     }
 
 

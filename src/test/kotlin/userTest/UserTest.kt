@@ -1,9 +1,6 @@
 package userTest
 
-import com.example.demo.model.Crypto
-import com.example.demo.model.CryptoBuilder
-import com.example.demo.model.User
-import com.example.demo.model.UserBuilder
+import com.example.demo.model.*
 import org.junit.jupiter.api.Assertions
 import org.junit.jupiter.api.Test
 
@@ -65,5 +62,59 @@ class UserTest {
        Assertions.assertEquals(user1.cryptos.get(0), cryptoA)
 
    }
+
+    @Test
+    fun userRealizedSaleThereIsAddInApp(){
+
+        var user1 : User=  User("Laura","ayala","layala","1234","c123","12345678")
+        var operation = user1.saleCrypto()
+
+        equals(operation.userCreated!! == user1)
+        assert(operation.userCreated!!.state =="waiting")
+
+    }
+
+    @Test
+    fun userRealizedSaleThereIsRealized(){
+
+        var user1 : User=  User("Laura","ayala","layala","1234","c123","12345678")
+        var user2 : User=  User("Julian","Bernal","jbernal","567","j123","9435")
+        var oper : Operation = user1.saleCrypto()
+        oper.updateUserInterested(user2)
+
+        assert(oper.userCreated == user1)
+        assert(oper.userInterested == user2)
+        assert(oper.userCreated!!.reception)
+    }
+    @Test
+    fun userRealizedBuyThereIsRealized(){
+
+        var user1 : User=  User("Laura","ayala","layala","1234","c123","12345678")
+        var user2 : User=  User("Julian","Bernal","jbernal","567","j123","9435")
+        var oper : Operation = user1.saleCrypto()
+        oper = oper.updateUserInterested(user2)
+        var operBuy= user2.buyCrypto(oper)
+
+
+        assert(operBuy.userCreated == user2)
+        assert(operBuy.userInterested == user1)
+        assert(operBuy.userInterested!!.reception)
+    }
+
+    @Test
+    fun user1CanceledOperationIsRstartPoints(){
+
+        var user1 : User=  User("Laura","ayala","layala","1234","c123","12345678")
+        var user2 : User=  User("Julian","Bernal","jbernal","567","j123","9435")
+        var oper : Operation = user1.saleCrypto()
+        oper = oper.updateUserInterested(user2)
+        user1 = oper.userCreated!!.canceledOperation(oper)
+
+        assert(user1.point== 0)
+
+    }
+
+
+
 
 }

@@ -3,7 +3,7 @@ package com.example.demo.model
 class OperationBuilder : Operation() {
 
     fun operationWithUser(userO: User){
-        this.user = userO
+        this.userCreated = userO
     }
 
     fun operationWithCantidadNominal(cantidad : Int){
@@ -13,7 +13,7 @@ class OperationBuilder : Operation() {
         this.cryptoActive = cryptoO
     }
 
-    fun operationWithType(operationO : String){
+    fun operationWithType(operationO : OperationType){
         this.operationType = operationO
     }
 

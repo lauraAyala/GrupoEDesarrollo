@@ -1,6 +1,7 @@
 package com.example.demo.model
 
 import jakarta.persistence.*
+import java.time.LocalDateTime
 
 @Entity
 open
@@ -12,27 +13,31 @@ class Crypto() {
     @Column
     var name: String? =null
     @Column
-    var date: String?= null
+    var date: LocalDateTime?= null
     @Column
-    var cryptoQuote: Int?= null
-
+    var quote: Double?= null
     @ManyToOne(fetch = FetchType.LAZY)
-    @JoinColumn(name = "id user")
+    @JoinColumn(name = " id user")
     var user : User? = null
 
-    var amountOfTheCrypto: Int?= null
-    var amountOfTheOperation: Int?= null
-
-    constructor(nameC: String, dateC: String, cryptoQ:Int) : this()  {
+    constructor(nameC: String, dateC: LocalDateTime, cryptoQ:Double) : this()  {
 
         this.name = nameC
         this.date = dateC
-        this.cryptoQuote = cryptoQ
+        this.quote = cryptoQ
     }
-    fun cryptoWithQuote(quote:Int){
+    fun cryptoWithQuote(quote:Double){
 
-        this.cryptoQuote = quote
+        this.quote = quote
+    }
+
+    fun updateQuote() : Crypto{
+
+        this.quote= this.quote!!+(this.quote!! * 0.05)
+
+        return this
     }
 
 
 }
+
