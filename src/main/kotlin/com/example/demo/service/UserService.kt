@@ -1,5 +1,7 @@
 package com.example.demo.service
 
+import com.example.demo.model.Crypto
+import com.example.demo.model.Operation
 import com.example.demo.repositories.UserRepository
 import com.example.demo.model.User
 import org.springframework.beans.factory.annotation.Autowired
@@ -19,6 +21,12 @@ class UserService {
 
     fun allUsers(): List<User>{
         return repo.findAll()
+    }
+
+    fun saleACrypto(user: User, crypto: Crypto) : Operation{
+
+        return user.saleCrypto(crypto)
+
     }
 
 

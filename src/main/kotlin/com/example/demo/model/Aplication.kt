@@ -94,13 +94,13 @@ private fun takeAction(operationAct: Operation) : String{
       return null
   }
 
-  private fun arrivedTranfer(operationAct: Operation) : String {
+  /*private fun arrivedTranfer(operationAct: Operation) : String {
 
-      operationAct.userInterested?.sendTransfer(operationAct.userCreated)
+      operationAct.userInterested?.sendTransfer(operationAct.userCreated,)
       return ("transfer realized")
 
 
-  }
+  }*/
 
   fun quoteActive(crypto: Crypto?) : Crypto{
 

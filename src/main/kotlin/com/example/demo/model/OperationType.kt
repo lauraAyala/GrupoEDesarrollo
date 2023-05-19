@@ -4,9 +4,9 @@ open class OperationType {
 
 
 
-    open fun realizeAction(operation: Operation){
+    open fun realizeAction(operation: Operation) : Operation{
 
-        this.realizeAction(operation)
+        return this.realizeAction(operation)
     }
 
 }

@@ -60,22 +60,22 @@ open class User() {
 
     }
 
-    fun saleCrypto(): Operation{
+    fun saleCrypto( cryptoA: Crypto): Operation{
 
-        var cryptoA=  Crypto("ALICEUSDT", LocalDateTime.now(),200.0)
-        cryptoA = cryptoA.updateQuote()
+       // var cryptoA=  Crypto("ALICEUSDT", LocalDateTime.now(),200.0)
+        var cryptoA = cryptoA.updateQuote()
         var saleOperation = SaleOperation()
         var operation = Operation(cryptoA,2,this,saleOperation)
         this.operations.add(operation)
-        this.takeAction(operation)
+        //this.takeAction(operation)
         this.cantOperations+=1
 
-        return operation
+        return this.takeAction(operation)
     }
 
-    private fun takeAction(operation: Operation) {
+    private fun takeAction(operation: Operation) : Operation {
 
-        operation.takeAction()
+        return operation.takeAction()
 
     }
 
@@ -87,11 +87,12 @@ open class User() {
         cryptoA = cryptoA!!.updateQuote()
         var buyOperation = BuyOperation()
         var operationA= Operation(cryptoA!!,operation.cantidadNominal!!,this,buyOperation)
-        operationA.userInterested= operation.userCreated
+        operationA = operationA.updateUserInterested(operation.userCreated!!)
         this.cantOperations+=1
         this.operations.add(operationA)
 
-        return operationA
+
+        return operationA.takeAction()
     }
 
 
@@ -101,34 +102,72 @@ open class User() {
 
     }
 
-    fun sendTransfer(sallerUser: User?) {
+    fun sendTransfer(sallerUser: User?,date: LocalDateTime) : User{
 
+        var user : User? = null
+        var dateActuality : LocalDateTime = LocalDateTime.now()
+           if (date.dayOfYear == dateActuality.dayOfYear && date.hour == dateActuality.hour && date.minute < dateActuality.minute){
+
+              user = sallerUser!!.sumPoint(10)
+           }
+           else{
+
+               user = sallerUser!!.sumPoint(5)
+
+           }
             sallerUser!!.updateReception()
 
+        return  user
+
 
     }
 
-    private fun updateReception() {
+    fun updateReception() : User {
 
         this.reception=true
+        return this
 
     }
 
-    fun confirmationTransfer() {
+    fun confirmationTransfer()  {
 
         this.updateReception()
     }
 
-    fun canceledOperation(operation: Operation): User {
+    fun canceledOperation(operation: Operation): Operation{
 
-        this.cantOperations-=1
-        if (this.point != 0) {
-            this.point -= 20
-        }
         this.operations.remove(operation)
+        var cancelated = CaceledOperation()
+        operation.userCreated= this
+        operation.operationType= cancelated
+        operation.takeAction()
+        return operation
+
+    }
+
+    fun subtractCantOperation() : User {
+
+        if (this.cantOperations != 0) {
+
+            this.cantOperations -= 1
+        }
 
         return this
+    }
 
+    fun subtractPoint() : User{
+
+        if (this.point != 0) {
+            this.point = this.point - 20
+        }
+        return this
+    }
+
+    fun sumPoint(cant: Int): User {
+
+        this.point = cant
+
+        return this
     }
 
 

@@ -49,22 +49,34 @@ open class Operation (){
 
     fun updateUserInterested(user: User) : Operation{
 
-        this.userInterested= user
-        this.takeAction()
+        var user2 = user.updateReception()
+        this.userInterested= user2
 
-        return this
+
+
+        return   this
 
     }
 
-    fun takeAction() {
+    fun takeAction() : Operation{
 
         if (this.userInterested != null){
             //this.operationType!!.realizeAction(this.userCreated,this.userInterested)
-            this.operationType!!.realizeAction(this)
+            var oper = this.operationType!!.realizeAction(this)
             this.userCreated!!.state="realized"
+
+            return oper
         }
        this.userCreated!!.state="waiting"
+      return this
 
+    }
+
+
+    fun subtractPointAndRemoveOperation() : Operation{
+
+        this.userCreated!!.subtractPoint()
+        return this
 
     }
 

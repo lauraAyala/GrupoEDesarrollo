@@ -1,6 +1,8 @@
 package com.example.demo.controller
 
 
+import com.example.demo.model.Crypto
+import com.example.demo.model.Operation
 import com.example.demo.model.User
 import org.springframework.beans.factory.annotation.Autowired
 import org.springframework.http.HttpStatus
@@ -34,6 +36,11 @@ class UserController {
     fun saveUser(@RequestBody user : User) : ResponseEntity<User> {
         service.createUser(user)
         return ResponseEntity(user, HttpStatus.CREATED)
+    }
+    @PostMapping("/saleCrypto")
+    fun saleCrypto(@RequestBody user : User,@RequestBody crypto:Crypto ) : ResponseEntity<Operation> {
+        var operation = service.saleACrypto(user,crypto)
+        return ResponseEntity(operation, HttpStatus.CREATED)
     }
 
 }
