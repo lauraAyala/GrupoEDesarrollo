@@ -6,7 +6,7 @@ import java.time.LocalDateTime
 import kotlin.jvm.Transient
 
 @Entity
-@Table(name = "user_table")
+@Table(name = "user_test")
 open class User() {
 
 
@@ -52,6 +52,7 @@ open class User() {
         this.password = passwordU
         this.direction = directionU
         this.cvuMP = cvu
+
     }
 
     fun addCryptoActivity(cryptoA: Crypto) {

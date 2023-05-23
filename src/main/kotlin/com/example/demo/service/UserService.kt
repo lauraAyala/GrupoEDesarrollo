@@ -22,10 +22,16 @@ class UserService {
     fun allUsers(): List<User>{
         return repo.findAll()
     }
+    fun recoverUser(id: Long): User{
 
-    fun saleACrypto(user: User, crypto: Crypto) : Operation{
+        return repo.getOne(id)
 
-        return user.saleCrypto(crypto)
+    }
+
+    fun saleACrypto(crypto: Crypto) : Operation{
+
+        var user = crypto.user
+        return user!!.saleCrypto(crypto)
 
     }
 

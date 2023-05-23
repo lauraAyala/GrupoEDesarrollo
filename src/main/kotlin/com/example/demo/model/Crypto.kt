@@ -1,5 +1,6 @@
 package com.example.demo.model
 
+import com.fasterxml.jackson.annotation.JsonFormat
 import jakarta.persistence.*
 import java.time.LocalDateTime
 
@@ -13,6 +14,7 @@ class Crypto() {
     @Column
     var name: String? =null
     @Column
+    @JsonFormat(shape=JsonFormat.Shape.STRING, pattern="yyyy-MM-ddTHH:mm:ss")
     var date: LocalDateTime?= null
     @Column
     var quote: Double?= null
@@ -25,6 +27,13 @@ class Crypto() {
         this.name = nameC
         this.date = dateC
         this.quote = cryptoQ
+    }
+    constructor(nameC: String, cryptoQ:Double, user :User) : this()  {
+
+        this.name = nameC
+        this.date = LocalDateTime.now()
+        this.quote = cryptoQ
+        this.user = user
     }
     fun cryptoWithQuote(quote:Double){
 
