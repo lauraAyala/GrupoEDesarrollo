@@ -39,7 +39,6 @@ dependencies {
 	testImplementation("org.springframework.security:spring-security-test")
 	implementation("org.springdoc:springdoc-openapi-starter-webmvc-ui:2.0.3")
 	implementation("org.springframework.boot:spring-boot-starter-validation")
-
 }
 
 tasks.withType<KotlinCompile> {
@@ -55,5 +54,5 @@ tasks.withType<Test> {
 }
 
 tasks.named<Jar>("jar"){
-	enabled = false
+		enabled= false
 }

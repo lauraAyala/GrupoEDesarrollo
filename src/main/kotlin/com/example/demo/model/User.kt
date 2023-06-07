@@ -2,12 +2,13 @@ package com.example.demo.model
 
 import com.fasterxml.jackson.annotation.JsonIgnore
 import jakarta.persistence.*
+import java.io.Serializable
 import java.time.LocalDateTime
 import kotlin.jvm.Transient
 
 @Entity
 @Table(name = "user_test")
-open class User() {
+open class User() : Serializable {
 
 
 
@@ -26,10 +27,13 @@ open class User() {
     var direction : String? = null
     @Column
     var cvuMP : String?=null
-    @Transient
-    @OneToMany
+   @Transient
+    //@OneToMany(cascade = arrayOf(CascadeType.ALL), mappedBy = "user")
+    //@JoinColumn(name = " id crypto")
+   //@JsonIgnore
+  // @ManyToMany
     var cryptos: ArrayList<Crypto> = ArrayList<Crypto>()
-    @Column
+    @Transient
     var cantOperations: Int = 0
         //var cryptos: PersistentBag<Crypto>? = null
    @Column
@@ -37,15 +41,15 @@ open class User() {
     @Transient
     var reception : Boolean = false
     //@OneToMany( fetch = FetchType.EAGER , mappedBy = "userCreated", cascade = arrayOf(CascadeType.ALL))
-    @Transient
-    @OneToMany
-    var operations: ArrayList<Operation> = ArrayList()
+    @JsonIgnore
+    @OneToMany( fetch = FetchType.EAGER , mappedBy = "userCreated", cascade = arrayOf(CascadeType.ALL))
+    var operations: MutableList<Operation> = ArrayList()
 
     var state: String? = null
 
 
 
-    constructor(nameU: String, lastNameU: String, emailU: String, passwordU: String, directionU: String, cvu: String):this(){
+    constructor(nameU: String, lastNameU: String, emailU: String, passwordU: String, directionU: String, cvu: String): this(){
         this.name = nameU
         this.lastName = lastNameU
         this.email = emailU
@@ -169,6 +173,21 @@ open class User() {
         this.point = cant
 
         return this
+    }
+
+    fun operationsWithCrypto(cryptoName: String): Operation {
+
+        var cant : Int = 0
+
+        var oper = this.operations.get(cant)
+        while ( cant != this.operations.size || oper.cryptoActive!!.name == cryptoName) {
+
+            oper = this.operations.get(cant)
+            cant +=1
+        }
+
+        return oper
+
     }
 
 

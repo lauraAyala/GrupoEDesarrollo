@@ -5,22 +5,30 @@ import org.springframework.transaction.annotation.Transactional
 import java.time.LocalDateTime
 import kotlin.jvm.Transient
 
+@Entity
+@Table(name="operation")
 open class Operation (){
 
 
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     val id : Long? = null
-    @OneToOne(fetch = FetchType.EAGER)
+
+    @Transient
     var cryptoActive : Crypto? = null
     @Column
     var cantidadNominal : Int? = null
     @Column
     var quoteCrypto : Int? = null
-    @Column
+    @Transient
     var amountOperation : Int? = null
+    @ManyToOne(fetch = FetchType.LAZY)
+    @JoinColumn(name = "userCreate_id")
     var userCreated : User? = null
+    @ManyToOne(fetch = FetchType.LAZY)
+    @JoinColumn(name = "userInterested_id")
     var userInterested : User? = null
+    @Transient
     var operationType : OperationType? = null
     @Column
     var date : LocalDateTime? = null

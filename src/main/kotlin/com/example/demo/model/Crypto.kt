@@ -2,11 +2,14 @@ package com.example.demo.model
 
 import com.fasterxml.jackson.annotation.JsonFormat
 import jakarta.persistence.*
+import java.io.Serializable
 import java.time.LocalDateTime
+import kotlin.jvm.Transient
 
 @Entity
+@Table(name="crypto")
 open
-class Crypto() {
+class Crypto() : Serializable{
 
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
@@ -18,8 +21,10 @@ class Crypto() {
     var date: LocalDateTime?= null
     @Column
     var quote: Double?= null
-    @ManyToOne(fetch = FetchType.LAZY)
-    @JoinColumn(name = " id user")
+    //@ManyToOne(fetch = FetchType.LAZY)
+    //@JoinColumn(name = " id user")
+    //var users: ArrayList<User> = ArrayList()
+    @Transient
     var user : User? = null
 
     constructor(nameC: String, dateC: LocalDateTime, cryptoQ:Double) : this()  {
@@ -33,7 +38,8 @@ class Crypto() {
         this.name = nameC
         this.date = LocalDateTime.now()
         this.quote = cryptoQ
-        this.user = user
+        this.user=user
+        //this.users.add(user)
     }
     fun cryptoWithQuote(quote:Double){
 

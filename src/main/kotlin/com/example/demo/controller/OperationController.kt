@@ -1,9 +1,11 @@
 package com.example.demo.controller
 
-
 import com.example.demo.model.Crypto
+import com.example.demo.model.Operation
 import com.example.demo.service.CryptoService
+import com.example.demo.service.OperationService
 import dto.CryptoDTO
+import dto.OperationDTO
 import org.springframework.beans.factory.annotation.Autowired
 import org.springframework.http.HttpStatus
 import org.springframework.http.ResponseEntity
@@ -13,20 +15,19 @@ import org.springframework.web.bind.annotation.RequestBody
 import org.springframework.web.bind.annotation.RestController
 
 @RestController
-class CryptoController {
+class OperationController {
 
     @Autowired
-    lateinit var service : CryptoService
+    lateinit var service : OperationService
 
-    @GetMapping("/cryptos")
-    fun allCryptos() : List<CryptoDTO>{
-        return service.allCryptos()
+    @GetMapping("/operations")
+    fun allOperations() : List<OperationDTO>{
+        return service.allOperations()
     }
 
-    @PostMapping("/addCrypto")
-    fun saveCrypto(@RequestBody crypto : Crypto) : ResponseEntity<Crypto> {
-        service.saveCrypto(crypto)
-        return ResponseEntity(crypto, HttpStatus.CREATED)
+    @PostMapping("/addOperation")
+    fun saveCrypto(@RequestBody oper : Operation) : ResponseEntity<Operation> {
+        service.saveOperation(oper)
+        return ResponseEntity(oper, HttpStatus.CREATED)
     }
-
 }
